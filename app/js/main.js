@@ -4,52 +4,66 @@ $(document).ready(function () {
   var tblObj;
   content.hide();
 
+  (buildDropDown = function () {
+    var optionList = [
+      { 'value': 1, 'text': 'All Posts' },
+      { 'value': 2, 'text': 'Even Posts' },
+      { 'value': 3, 'text': 'Odd Posts' }
+    ];
+
+    $.each(optionList, function (i, el) {
+      $('#selectPosts').append("<option value="+el.value+">" + el.text + "</option>");
+    });
+  })();
+
   $.get("https://jsonplaceholder.typicode.com/posts", function (res) {
     data = res;
-    tData = res;
+  }).fail(function () {
+    console.log("ajax call failed");
+  }).always(function () {
+    console.log("ajax call finished");
   });
 
-  $('#selectPosts').on('change', function(e){
-    switch($(this).val()){
+  $('#selectPosts').on('change', function (e) {
+    switch ($(this).val()) {
       case '-1':
-      content.hide();
+        content.hide();
         break;
       case '1':
-        tblObj?tblObj.destroy():'';
+        tblObj ? tblObj.destroy() : '';
         buildDataTable(data);
         content.show();
         break;
       case '2': //Even Ids
-        tblObj?tblObj.destroy():'';
-        buildDataTable(data.filter(r=>r.id%2==0));
+        tblObj ? tblObj.destroy() : '';
+        buildDataTable(data.filter(r => r.id % 2 == 0));
         content.show();
         break;
       case '3': //Odd Ids
-        tblObj?tblObj.destroy():'';
-        buildDataTable(data.filter(r=>r.id%2));
+        tblObj ? tblObj.destroy() : '';
+        buildDataTable(data.filter(r => r.id % 2));
         content.show();
         break;
-      default :
+      default:
         content.hide();
     }
   });
 
-  var addTitle = function(data, type, row){
-    return '<span title="'+data+'">'+data+'</span>';
+  var addTitle = function (data, type, row) {
+    return '<span title="' + data + '">' + data + '</span>';
   };
 
-  buildDataTable = function(ds){
+  buildDataTable = function (ds) {
     tblObj = $('#datatable').DataTable({
       data: ds,
-      columns:[
-        {data: "userId"},
-        {data: "id"},
-        {data: "title", render: addTitle},
-        {data: "body", render: addTitle}
+      columns: [
+        { data: "userId" },
+        { data: "id" },
+        { data: "title", render: addTitle },
+        { data: "body", render: addTitle }
       ],
-      'searching': false,
-      'bLengthChange': false,
-      'pageLength': 8
+      'pageLength': 8,
+      'dom': 'tp'
     });
   };
 });
