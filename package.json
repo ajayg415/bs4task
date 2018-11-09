@@ -1,0 +1,16 @@
+{
+  "name": "task",
+  "version": "1.0.1",
+  "description": "Display content based on dropdown change using json contract from API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Srikanth",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "datatables.net-bs4": "^1.10.19",
+    "jquery": "^3.3.1"
+  }
+}

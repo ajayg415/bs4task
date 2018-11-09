@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Dynamic JSON sorting.</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="app/css/main.css" />
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row px-2">
+      <form class="col-sm-6 col-md-6">
+        <div class="form-group row">
+          <label for="selectPosts" class="col-sm-6 col-form-label">Select Posts</label>
+          <select class="form-control form-control-sm col-sm-6" id="selectPosts">
+            <option value="-1">Select One</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row flex-sm-column flex-md-row" id="content">
+      <div class="col-lg-6 col-md-8 col-sm-12 order-md-0 order-sm-1">
+        <table id="datatable" class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>User Id</th>
+              <th>ROll Id</th>
+              <th>Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="col-lg-6 col-md-4 col-sm-12 order-md-1 order-sm-0 my-2">
+        <img src="app/img/nature.png" class="img-fluid"/>
+      </div>
+    </div>
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+  <script src="node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+  <script src="app/js/main.js"></script>
+</body>
+
+</html>
